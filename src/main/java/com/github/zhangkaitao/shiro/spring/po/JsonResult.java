@@ -1,10 +1,12 @@
 package com.github.zhangkaitao.shiro.spring.po;
 
+import java.io.Serializable;
+
 /**
  * Desc:ajax请求的json结果
  * Created by hafiz.zhang on 2017/7/21.
  */
-public class JsonResult {
+public class JsonResult implements Serializable{
     private Integer code = 200;         // 请求结果码
     private Boolean success = true;     // 请求结果
     private String msg;                 // 请求错误信息

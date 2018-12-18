@@ -2,6 +2,7 @@ package com.github.zhangkaitao.shiro.chapter22.realm;
 
 import com.github.zhangkaitao.shiro.chapter22.entity.User;
 import com.github.zhangkaitao.shiro.chapter22.service.UserService;
+import com.github.zhangkaitao.shiro.spring.ByteSourceUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -49,7 +50,8 @@ public class UserRealm extends AuthorizingRealm {
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
                 user.getUsername(), //用户名
                 user.getPassword(), //密码
-                ByteSource.Util.bytes(user.getCredentialsSalt()),//salt=username+salt
+               // ByteSource.Util.bytes(user.getCredentialsSalt()),//salt=username+salt
+                ByteSourceUtils.bytes(user.getCredentialsSalt()),//salt=username+salt
                 getName()  //realm name
         );
         return authenticationInfo;
