@@ -88,8 +88,8 @@
     <import resource="classpath:spring-config-cache.xml"/>
   <!--
     spring-config-shiro.xml和spring-config-shiro-redis.xml 二选一
-    <import resource="classpath:spring-config-shiro-redis.xml"/>
-  -->
    <import resource="classpath:spring-config-shiro.xml"/>
+  -->
+    <import resource="classpath:spring-config-shiro-redis.xml"/>
     <import resource="classpath:spring-config-redis.xml"/>
 </beans>

@@ -15,7 +15,8 @@ import java.io.Serializable;
 public class SimpleByteSource extends org.apache.shiro.util.SimpleByteSource
         implements Serializable {
 
-    private static final long serialVersionUID = 5528101080905698238L;
+
+    private static final long serialVersionUID = -8436295482078889359L;
 
     public SimpleByteSource(byte[] bytes) {
         super(bytes);
