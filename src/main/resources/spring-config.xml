@@ -86,6 +86,10 @@
     <bean class="com.github.zhangkaitao.shiro.spring.SpringUtils"/>
 
     <import resource="classpath:spring-config-cache.xml"/>
-    <import resource="classpath:spring-config-shiro.xml"/>
+  <!--
+
+    <import resource="classpath:spring-config-shiro-redis.xml"/>
+  -->
+   <import resource="classpath:spring-config-shiro.xml"/>
     <import resource="classpath:spring-config-redis.xml"/>
 </beans>

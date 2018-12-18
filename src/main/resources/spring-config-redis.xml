@@ -47,5 +47,16 @@
             <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
         </property>
     </bean>
-
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+        <constructor-arg ref="jedisPoolConfig"/>
+        <constructor-arg value="${redis.host}"/>
+        <constructor-arg type="int" value="${redis.port}"/>
+        <constructor-arg type="int" value="${redis.timeout}"/>
+        <constructor-arg type="java.lang.String" value="${redis.password}"/>
+        <constructor-arg type="int" value="${redis.dbindex}"/>
+    </bean>
+    <bean id="redisClient" class="com.github.zhangkaitao.shiro.spring.RedisClient">
+        <constructor-arg name="jedisPool" ref="jedisPool"/>
+        <property name="expire" value="${redis.default.expire}"/>
+    </bean>
 </beans>
