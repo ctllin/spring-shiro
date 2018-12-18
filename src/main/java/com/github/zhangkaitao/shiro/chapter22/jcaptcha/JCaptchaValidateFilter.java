@@ -11,6 +11,7 @@ import org.apache.shiro.web.util.WebUtils;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 
 /**
  * 验证码过滤器
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
  * <p>Date: 13-3-22 下午4:01
  * <p>Version: 1.0
  */
-public class JCaptchaValidateFilter extends AccessControlFilter {
+public class JCaptchaValidateFilter extends AccessControlFilter implements Serializable{
 
     private boolean jcaptchaEbabled = true;//是否开启验证码支持
 
