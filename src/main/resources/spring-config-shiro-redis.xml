@@ -43,7 +43,19 @@
         <property name="cacheManager" ref="redisCacheManager"/>
         <property name="sessionManager" ref="sessionManager"/>
     </bean>
-
+    <!-- 基于Form表单的身份验证过滤器 -->
+    <bean id="authcFilter" class="com.github.zhangkaitao.shiro.chapter22.jcaptcha.MyFormAuthenticationFilter">
+        <property name="usernameParam" value="username"/>
+        <property name="passwordParam" value="password"/>
+        <property name="rememberMeParam" value="rememberMe"/>
+        <property name="failureKeyAttribute" value="shiroLoginFailure"/>
+    </bean>
+    <bean id="sysUserFilter" class="com.github.zhangkaitao.shiro.chapter22.web.shiro.filter.SysUserFilter"/>
+    <bean id="jCaptchaValidateFilter" class="com.github.zhangkaitao.shiro.chapter22.jcaptcha.JCaptchaValidateFilter">
+        <property name="jcaptchaEbabled" value="true"/>
+        <property name="jcaptchaParam" value="jcaptchaCode"/>
+        <property name="failureKeyAttribute" value="shiroLoginFailure"/>
+    </bean>
     <!--shiro filter-->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
@@ -53,17 +65,24 @@
         <property name="filters">
             <util:map>
                 <entry key="auth">
+<!--
                     <bean class="com.github.zhangkaitao.shiro.spring.filter.AuthorizeFilter"/>
+-->
+                    <bean class="com.github.zhangkaitao.shiro.chapter22.web.shiro.filter.SysUserFilter"/>
                 </entry>
+                <entry key="authc" value-ref="authcFilter"/>
+                <entry key="sysUser" value-ref="sysUserFilter"/>
+                <entry key="jCaptchaValidate" value-ref="jCaptchaValidateFilter"/>
             </util:map>
         </property>
         <property name="filterChainDefinitions">
             <value>
-                /login.json = anon
-                /logout.json = anon
-                /js/** = anon
-                / = authc
-                /** = auth
+                /static/** = anon
+                /jcaptcha* = anon
+                /login = jCaptchaValidate,authc
+                /logout = logout
+                /authenticated = authc
+                /** = user,sysUser
             </value>
         </property>
     </bean>
