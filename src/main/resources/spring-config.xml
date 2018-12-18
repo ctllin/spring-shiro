@@ -15,7 +15,7 @@
     <context:property-placeholder location="classpath:info.properties"/>
 
     <!-- 扫描注解Bean -->
-    <context:component-scan base-package="com.github.zhangkaitao.shiro.chapter22">
+    <context:component-scan base-package="com.github.zhangkaitao.shiro.chapter22,com.github.zhangkaitao.shiro.spring">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
@@ -87,4 +87,5 @@
 
     <import resource="classpath:spring-config-cache.xml"/>
     <import resource="classpath:spring-config-shiro.xml"/>
+    <import resource="classpath:spring-config-redis.xml"/>
 </beans>

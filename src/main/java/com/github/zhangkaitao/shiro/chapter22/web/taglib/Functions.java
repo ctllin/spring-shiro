@@ -9,6 +9,7 @@ import com.github.zhangkaitao.shiro.chapter22.service.RoleService;
 import com.github.zhangkaitao.shiro.spring.SpringUtils;
 import org.springframework.util.CollectionUtils;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -16,7 +17,7 @@ import java.util.Collection;
  * <p>Date: 14-2-15
  * <p>Version: 1.0
  */
-public class Functions {
+public class Functions implements Serializable{
 
     public static boolean in(Iterable iterable, Object element) {
         if(iterable == null) {

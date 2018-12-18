@@ -8,13 +8,15 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
+
 /**
  * <p>User: ctllin
  * <p>Date: 14-1-28
  * <p>Version: 1.0
  */
 @Service
-public class PasswordHelper {
+public class PasswordHelper implements Serializable{
 
     private RandomNumberGenerator randomNumberGenerator = new SecureRandomNumberGenerator();
 
