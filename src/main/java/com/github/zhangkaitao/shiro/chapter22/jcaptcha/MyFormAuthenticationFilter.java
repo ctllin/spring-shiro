@@ -4,13 +4,14 @@ import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import java.io.Serializable;
 
 /**
  * <p>User: ctllin
  * <p>Date: 14-3-3
  * <p>Version: 1.0
  */
-public class MyFormAuthenticationFilter extends FormAuthenticationFilter {
+public class MyFormAuthenticationFilter extends FormAuthenticationFilter implements Serializable{
 
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {

@@ -12,12 +12,7 @@ import java.io.Serializable;
  * @version 1.0
  * @date 2018-12-18 19:06
  */
-public class SimpleByteSource extends org.apache.shiro.util.SimpleByteSource
-        implements Serializable {
-
-
-    private static final long serialVersionUID = -8436295482078889359L;
-
+public class SimpleByteSource extends org.apache.shiro.util.SimpleByteSource  implements Serializable {
     public SimpleByteSource(byte[] bytes) {
         super(bytes);
         // TODO 自动生成的构造函数存根
