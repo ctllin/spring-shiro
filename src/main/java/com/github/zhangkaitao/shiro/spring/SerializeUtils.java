@@ -33,13 +33,14 @@ public class SerializeUtils {
     /**
      * 序列化对象
      *
-     * @param object
+     * @param obj
      * @return
      */
     public static <T> byte[] serialize(T obj) {
         try {
             return jdkSerializationRedisSerializer.serialize(obj);
         } catch (Exception e) {
+            logger.error("序列化失败!",e);
             throw new RuntimeException("序列化失败!", e);
         }
     }
@@ -79,6 +80,7 @@ public class SerializeUtils {
         try {
             return (T) jdkSerializationRedisSerializer.deserialize(bytes);
         } catch (Exception e) {
+            logger.error("反序列化失败!",e);
             throw new RuntimeException("反序列化失败!", e);
         }
     }

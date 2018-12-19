@@ -19,7 +19,7 @@ public class SerializeUtils {
     public static boolean isEmpty(byte[] data) {
         return (data == null || data.length == 0);
     }
-    private static Logger logger = LoggerFactory.getLogger(com.github.zhangkaitao.shiro.spring.SerializeUtils.class);
+    private static Logger logger = LoggerFactory.getLogger(SerializeUtils.class);
 
     /**
      * 序列化对象
@@ -31,6 +31,7 @@ public class SerializeUtils {
         try {
             return jdkSerializationRedisSerializer.serialize(obj);
         } catch (Exception e) {
+            logger.error("序列化失败",e);
             throw new RuntimeException("序列化失败!", e);
         }
     }
@@ -70,6 +71,7 @@ public class SerializeUtils {
         try {
             return (T) jdkSerializationRedisSerializer.deserialize(bytes);
         } catch (Exception e) {
+            logger.error("反序列化失败",e);
             throw new RuntimeException("反序列化失败!", e);
         }
     }
